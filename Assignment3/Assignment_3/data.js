@@ -41,6 +41,22 @@ const data = [
                 year: 2018
             }
         ]
+    },
+    {
+        id: "pink-floyd",
+        name: "Pink Floyd",
+        topAlbums: [
+            {
+                id: "the-dark-side-of-the-moon",
+                name: "The Dark Side of The Moon",
+                year: 1973
+            },
+            {
+                id: "the-division-bell",
+                name: "The Division Bell",
+                year: 1994
+            }
+        ]
     }
 ];
 
