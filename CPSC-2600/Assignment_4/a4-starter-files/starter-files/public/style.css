@@ -52,3 +52,24 @@ dt {
     right:0;
     background-color: white;
 }
+
+.errors {
+  margin-top: 20px;
+}
+
+.error-item {
+  margin: 18px 0;
+}
+
+.error-field {
+  color: darkred;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.error-message {
+  color: darkred;
+  font-size: .8rem;
+  margin-left: 40px; /* indentation like screenshot */
+  margin-top: 6px;
+}

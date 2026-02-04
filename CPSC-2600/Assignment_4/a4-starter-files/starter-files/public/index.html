@@ -13,52 +13,78 @@
         <p class="tagline">Online Order Form</p>
     </header>
     
-    <form>
-        <!-- TODO: pizza order form -->
-         <label for="tomato">Tomato</label>
-         <input type="radio" name="tomato" id="tomato" checked="true" >
-         
+    <form method="POST" action="/orders">
 
-         <label for="alfredo">Alfredo</label>
-         <input type="radio" name="alfredo" id="alfredo">
-        
+    <fieldset>
+        <legend>DESIGN YOUR PIZZA!</legend>
 
-         <!--The checkboxes-->
-         <label for="Papperoni">Papperoni</label>
-         <input type="checkbox" id="Pepperoni" name="Pepperoni">
-         
+        <fieldset>
+        <legend>SAUCE</legend>
 
-         <label for="Ham">Ham</label>
-         <input type="checkbox" id="Ham" name="Ham">
-         
+        <label>
+            Tomato
+            <input type="radio" name="sauce" value="tomato" checked>
+        </label>
 
-         <label for="Vegetarian_Sausage">Vegetarian Sausage</label>
-         <input type="checkbox" id="Vegetarian_Sausage" name="Vegetarian_Sausage">
-         
+        <label>
+            Alfredo
+            <input type="radio" name="sauce" value="alfredo">
+        </label>
+        </fieldset>
 
-         <label for="Mushrooms">Mushrooms</label>
-         <input type="checkbox" id="Mushrooms" name="Mushrooms">
-         
+        <fieldset>
+        <legend>TOPPINGS</legend>
 
-         <label for="Peppers">Peppers</label>
-         <input type="checkbox" id="Peppers" name="Peppers">
-         
+        <label>
+            Pepperoni
+            <input type="checkbox" name="toppings" value="pepperoni">
+        </label>
 
-         <label for="Olives">Olives</label>
-         <input type="checkbox" id="Olives" name="Olives">
-         
+        <label>
+            Ham
+            <input type="checkbox" name="toppings" value="ham">
+        </label>
 
-         <label for="your_name">Your name: </label>
-         <input type="text" id="your_name" name="your_name">
-         
+        <label>
+            Vegetarian Sausage
+            <input type="checkbox" name="toppings" value="vegetarian-sausage">
+        </label>
 
-         <label for="your_email">Email</label>
-         <input type="text" name="your_email" id="your_email">
-         
+        <label>
+            Mushrooms
+            <input type="checkbox" name="toppings" value="mushrooms">
+        </label>
 
-         <button>Submit</button>
-         
+        <label>
+            Peppers
+            <input type="checkbox" name="toppings" value="peppers">
+        </label>
+
+        <label>
+            Olives
+            <input type="checkbox" name="toppings" value="olives">
+        </label>
+        </fieldset>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>YOUR INFO</legend>
+
+        <label>
+        Your name:
+        <input type="text" name="name">
+        </label>
+
+        <label>
+        Email:
+        <input type="text" name="email">
+        </label>
+    </fieldset>
+
+    <button type="submit">Submit</button>
     </form>
+
 
     <form action="/" method="GET" id="color-form">
         <label>
