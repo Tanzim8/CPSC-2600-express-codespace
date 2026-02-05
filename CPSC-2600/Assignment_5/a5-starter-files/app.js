@@ -7,6 +7,8 @@ const server = app.listen(3000, ()=>{
     console.log("listening on 3000");
 });
 
+app.use(express.static("public"));
+
 //the database implementation
 import {DatabaseSync} from "node:sqlite";
 import path from "node:path";
