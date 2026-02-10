@@ -1,0 +1,8 @@
+This part is basically teaching us how to design database and all. 
+1. Entity, Attributes, ER diagrams etc. 
+3. Many to many relationships. (All the other relationships in database! )
+4. One to many 
+5. One to One
+6. Many to many relationships are not kind of allowed in Data Modles because of data dublications. 
+7. Primary Key's(Unique identifier)
+8. 
