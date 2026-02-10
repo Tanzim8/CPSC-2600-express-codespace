@@ -34,3 +34,21 @@ app.get('/books', (req, res)=>{
     res.json(books);
 
 });
+
+//author part
+
+app.get('/authors', (req,res)=>{
+    let country = req.query.country;
+    let authors;
+    if(country){
+        authors =  db.prepare(
+            `SELECT * FROM authors
+            WHERE country =?;`
+        ).all(country);
+    }else{
+        authors = db.prepare(
+            `SELECT * FROM authors;`
+        ).all();
+    }
+    res.json(authors);
+});
