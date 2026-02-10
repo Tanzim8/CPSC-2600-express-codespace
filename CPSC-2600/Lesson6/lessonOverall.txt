@@ -5,4 +5,40 @@ This part is basically teaching us how to design database and all.
 5. One to One
 6. Many to many relationships are not kind of allowed in Data Modles because of data dublications. 
 7. Primary Key's(Unique identifier)
-8. 
+8. Normalizations:
+a Realtion: 
+a. First normal form: The data is in a 2-dimensional table and there are no multivalued Attributes
+Strategy: To create a new realtion for the multivalued table part. 
+b. Composite key is a primary key made of more than one column.
+
+From: Order(OrderID, userID, userName, Address), ProductName, Manufacture, ManufactureEmail
+To: First NF: 
+Order(OrderID, userID, userName, Address)
+Products(OrderID, ProductName, Manufacture, ManufactureEmail)
+
+9. Second Normal Form: Each non non-key column is functionally depedent on the entire primary key. 
+functionally depedent: means One set of attribute is uniquely determined by another set of attribute. 
+Example: 
+Student ID ->> StudentName
+Student name functionally depedent on Student.ID BECAUSE an ID determines unique student name. 
+
+(2 NF)
+Orders (OrderID, UserID, UserName, Address)
+OrderProducts(OrderID, ProductName)
+Products(ProductName, Manufacture, ManufactureEmail)
+
+(3 NF):
+There must not be any transative dependencies, which means each non key attribute must depend directly on the key. 
+A>>B and B>>C means C is functionally depedent on A throug B. This is transative depency. 
+Strategy: Make a new table for the attribute that is transatively dependent. It's PK should be the thing it is transatively dependent
+
+Orders (OrderID, UserID)
+Users(UserID,UserName, Address)
+OrderProducts(OrderID, ProductName)
+Products(ProductName, Manufacture, ManufactureEmail)
+Manufacturer(Manufacturer, ManufactureEmail)
+Foreign Key: Is a column in a table that is used to look up data in another table. 
+
+# Challenge: Build the tables for the above relations and fill them with data to make sure everything checks out. 
+
+
