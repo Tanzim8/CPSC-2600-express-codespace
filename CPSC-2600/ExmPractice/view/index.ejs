@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Langara Cars</h1>
+        <p class="tagline">Online Order Form</p>
+    </header>
+    
+    <form method="POST" action="/orders">
+
+    <fieldset>
+        <legend>CHOOSE YOUR CAR & BOOKS!</legend>
+
+        <fieldset>
+        <legend>CARS</legend>
+
+        <label>
+            Corolla
+            <input type="radio" name="car" value="corolla" checked>
+        </label>
+
+        <label>
+            Camry
+            <input type="radio" name="car" value="camry">
+        </label>
+        <label>
+            Supra
+            <input type="radio" name="car" value="supra">
+        </label>
+        <label>
+            FourRunner
+            <input type="radio" name="car" value="fourrunner">
+        </label>
+        </fieldset>
+
+        <fieldset>
+        <legend>BOOKS</legend>
+
+        <label>
+            Harry Potter
+            <input type="checkbox" name="books" value="harry-potter">
+        </label>
+
+        <label>
+            Loed of the Rings
+            <input type="checkbox" name="books" value="lord-of-the-rings">
+        </label>
+
+        <label>
+            Game of Thrones
+            <input type="checkbox" name="books" value="game-of-thrones">
+        </label>
+
+        <label>
+            The Hobbit
+            <input type="checkbox" name="books" value="the-hobbit">
+        </label>
+
+        <label>
+            The Catcher in the Rye
+            <input type="checkbox" name="books" value="the-catcher-in-the-rye">
+        </label>
+
+        <label>
+            To Kill a Mockingbird
+            <input type="checkbox" name="books" value="to-kill-a-mockingbird">
+        </label>
+
+        <label>
+            Song of Ice and Fire
+            <input type="checkbox" name="books" value="song-of-ice-and-fire">
+        </label>
+        </label>
+        </fieldset>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>YOUR INFO</legend>
+
+        <label>
+        Your name:
+        <input type="text" name="name">
+        </label>
+
+        <label>
+        Email:
+        <input type="text" name="email">
+        </label>
+    </fieldset>
+
+    <button type="submit">Submit</button>
+    </form>
+
+
+    <form action="/" method="GET" id="color-form">
+        <label>
+            Change background color: 
+            <input type="color" name="color">
+        </label>
+        <button>Submit</button>
+    </form>
+</body>
+</html>
