@@ -93,6 +93,7 @@ export const colorValidator = (req, res, next) => {
     const cleanColor = color.startsWith("#")
         ? color.substring(1)
         : color;
+        
         // if(color.startsWith("#")){
         //     color.subString(1);
         // }else{
