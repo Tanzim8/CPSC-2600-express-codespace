@@ -1,0 +1,106 @@
+{
+  "info": {
+    "_postman_id": "70a9aa3f-aa8f-46aa-8c58-09655ac6790e",
+    "name": "Books API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52924909",
+    "_collection_link": "https://go.postman.co/collection/52924909-70a9aa3f-aa8f-46aa-8c58-09655ac6790e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get Author By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "Returns information about a specific author using the author ID.\n\nPath Params:\n\nid – the ID of the author"
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://fuzzy-couscous-97jq44955xq93pwvj-3000.app.github.dev/api/v1/books?page=1",
+          "protocol": "https",
+          "host": [
+            "fuzzy-couscous-97jq44955xq93pwvj-3000",
+            "app",
+            "github",
+            "dev"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "books"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Returns a paginated list of books from the database.  \nOnly books of the specified format are returned (default is hardcover).\n\npage – required – page number of results  \nformat – optional – book format (default: hardcover)"
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Authors",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://fuzzy-couscous-97jq44955xq93pwvj-3000.app.github.dev/api/v1/authors",
+          "protocol": "https",
+          "host": [
+            "fuzzy-couscous-97jq44955xq93pwvj-3000",
+            "app",
+            "github",
+            "dev"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "authors"
+          ]
+        },
+        "description": "Returns a list of all authors stored in the database."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Reviews By Book",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Create Review",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://fuzzy-couscous-97jq44955xq93pwvj-3000.app.github.dev/api/v1/reviews",
+          "protocol": "https",
+          "host": [
+            "fuzzy-couscous-97jq44955xq93pwvj-3000",
+            "app",
+            "github",
+            "dev"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "reviews"
+          ]
+        },
+        "description": "Creates a new review for a specific book.\n\nbook_id – ID of the book being reviewed  \nreview – text of the review  \nrating – numeric rating value"
+      },
+      "response": []
+    }
+  ]
+}
