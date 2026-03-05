@@ -31,11 +31,11 @@
 
     <h2>Details for Selected Books</h2>
     <ul>
-        <li><a href="/api/v1/books/9781739822507">9781739822507</a></li>
-        <li><a href="/api/v1/books/9781911617235">9781911617235</a></li>
-        <li><a href="/api/v1/books/9781788160919">9781788160919</a></li>
-        <li><a href="/api/v1/books/9781788160124">9781788160124</a></li>
-        <li><a href="/api/v1/books/9781474623025">9781474623025</a></li>
+        <li><a href="/api/v1/books/2">2</a></li>
+        <li><a href="/api/v1/books/4">4</a></li>
+        <li><a href="/api/v1/books/8">8</a></li>
+        <li><a href="/api/v1/books/16">16</a></li>
+        <li><a href="/api/v1/books/32">32</a></li>
     </ul>
 
     <!-- <h2>Rate a Book</h2>
@@ -50,5 +50,38 @@
         </label>
         <button>submit</button>
     </form> -->
+
+    <section>
+        <h2>Details for Selected Authors</h2>
+        <ul>
+            <li><a href="/api/v1/authors/6">6</a></li>
+            <li><a href="/api/v1/authors/12">12</a></li>
+            <li><a href="/api/v1/authors/18">18</a></li>
+            <li><a href="/api/v1/authors/24">24</a></li>
+            <li><a href="/api/v1/authors/30">30</a></li>
+        </ul>
+    </section>
+
+    <h2>Write a Review</h2>
+
+    <form action="/api/v1/reviews" method="POST">
+
+    <label for="reviewer">Your name:</label>
+    <input type="text" id="reviewer" name="reviewer" required>
+
+    <label for="book_id">ID of book you'd like to review</label>
+    <input type="number" id="book_id" name="book_id" min="1" required>
+
+    <br><br>
+
+    <label for="rating">Your rating of the book</label>
+    <input type="number" id="rating" name="rating" min="0" max="5" required>
+
+    <label for="comment">Your comments</label>
+    <textarea id="comment" name="comment" rows="2" cols="30"></textarea>
+
+    <button type="submit">Submit</button>
+
+    </form>
 </body>
 </html>

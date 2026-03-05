@@ -55,54 +55,108 @@ app.get("/api/v1/books",(req, res)=>{
     res.json(books);
 });
 
-//Task 3: 
-app.get('/api/v1/books/:isbn',(req, res)=>{
-    let isbn = req.params.isbn;
-    let book;
-    //commented out the original query for Task : 3 and updated it for Task : 4
+app.get("/api/v1/books/:id", (req, res) => {
+  const id = req.params.id;
 
-    // const query = 
-    // `SELECT * FROM books
-    // WHERE books.isbn = ? `;
+  const book = db.prepare(`
+    SELECT *, publishers.publisher
+    FROM books
+    JOIN PUBLISHERS ON books.publisher_id = publishers.id
+    WHERE books.id = ?;
+  `).get(id);
 
-    //updated quert for Task : 4
-    const query = 
-        `SELECT books.*, publishers.publisher
-        FROM books
-        JOIN publishers ON books.publisher_id = publishers.id
-        WHERE books.isbn = ? `;
-    //Task 5
-    let ratingsQuery = `
-    SELECT books.*,ratings.rating
-        FROM books
-        --TASK: 5
-        JOIN ratings ON books.id = ratings.book_id
-        WHERE books.isbn = ? ;`
+  let authors = db.prepare(
+    `SELECT authors.id, authors.name FROM books
+    JOIN authored ON books.id = authored.book_id
+    JOIN authors ON authored.author_id = authors.id
+    WHERE books.id = ?;
+    `
+  ).all(id);
+  authors.forEach((author) => {
+    author.link = `/api/v1/authors/${author.id}`;
+  });
 
-    const booksRatings = db.prepare(ratingsQuery).all(isbn);
-    let totalRatingsQuery = 0;
-    let totalRatings = 0;
+  if (!book) {
+    return res.status(404).json({ message: "Book not found" });
+  }
+  book.authors = authors;
 
-    booksRatings.forEach((entry)=>{
-        totalRatingsQuery += entry.rating;
-        totalRatings ++;
-    })
+  res.json(book);
+});
 
-    let averageRating = totalRatingsQuery / totalRatings;
+app.get('/api/v1/authors/:id', (req, res)=>{
+    let id = req.params.id;
+    console.log("Author ID requested:", id);
+    let authors = db.prepare(
+        `SELECT * FROM authors
+        WHERE id =?;
+        `
+    ).get(id);
 
-    book = db.prepare(query).all(isbn);
-    book[0].averageRating = averageRating;
-    res.json(book);
+    if (!authors) {
+        return res.status(404).json({ message: "Author not found" });
+    }
+
+    let books = db.prepare(
+        `
+        SELECT books.id, books.title 
+        FROM books 
+        JOIN authored on books.id = authored.book_id
+        WHERE authored.author_id = ?;
+        `
+    ).all(id);
+
+    books.forEach((book) =>{
+        book.link=`/api/v1/books/${book.id}`;
+
+    });
+    authors.books = books;
+    res.json(authors);
 })
 
-//Task 6
-// app.post('/api/v1/ratings', (req, res)=>{
-//     let id = req.body.book_id;
-//     let ratings = req.body.rating;
+app.post("/api/v1/reviews",(req, res)=>{
+    // const { reviewer, rating, book_id, comment } = req.body;
 
-//     const query = `
-//     INSERT INTO ratings (book_id, rating) VALUES (?, ?)`;
+    const reviewer = req.body.reviewer;
+    const rating = Number(req.body.rating);
+    const book_id = Number(req.body.book_id);
+    const comment = req.body.comment;
+    if(!reviewer || !rating || !book_id){
+        return res.status(400).json({ message: "Missing required fields" });
+    }
 
-//     db.prepare(query).run(id, ratings);
-//     res.json({message: "Rating added successfully"});
-// })
+    if(rating < 0 || rating > 5){
+        return res.status(400).json({ message: "Rating must be between 0 and 5" });
+    }
+
+    const insert = db.prepare(
+        `
+        INSERT INTO reviews (reviewer, rating, book_id, comment)
+        VALUES (?, ?, ?, ?);
+        `
+    )
+    const result = insert.run(reviewer, rating, book_id, comment);
+
+      const newId = result.lastInsertRowid;
+
+  // Location header
+  const reviewPath = `/api/v1/reviews/${newId}`;
+  res.set("Location", reviewPath);
+
+  // response body
+  res.status(201).json({
+    status: 201,
+    message: "Review created successfully",
+    links: {
+      by_review_id: reviewPath,
+      by_book_id: `/api/v1/reviews?book_id=${bookId}`
+    },
+    review: {
+      id: newId,
+      reviewer: reviewer,
+      rating: rating,
+      book_id: bookId,
+      comment: comment
+    }
+});
+})
