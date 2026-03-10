@@ -1,0 +1,13 @@
+ Introduction to React
+	- Setup: create a new blank Codespace
+	- Setting up Parcel bundler
+	- Creating new React application
+	- Making components
+	- Managing state
+
+- For the past few weeks we've been making programs that run on the server. The client sends a request for something, and our server-side applications responds by sending something back, maybe from the database.
+- Client is the browser. How the does the user send a request using the browser as the client? Get requests with URLs (maybe using an anchor tag or hyperlink) or maybe a form; POST request sent through a form, etc. On the client, we have a webpage that is marked up with HTML code and provides hyperlinks, forms, etc. that the user uses to send requests to the server. 
+- We will use JavaScript to write an application that runs in the client (browser) and renders and HTML page that the user can interact with. 
+- React is a framework that makes it easier to write fast client-side applications. 
+
+	
