@@ -8,7 +8,7 @@ function App(){
         <div>
             {/* <TypeChooser/> */}
             <h1>Jokes React App!</h1>
-            <TypeChooser setSelectedType={selectedType}/>
+            <TypeChooser setSelectedType={setSelectedType}/>
             <Joke selectedType={selectedType}/>
         </div>
     )
