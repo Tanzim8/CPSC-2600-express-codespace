@@ -4210,6 +4210,8 @@ function Joke({ selectedType }) {
     _s();
     const [jokeState, setJokeState] = (0, _react.useState)(null);
     const [reloadCount, setReloadCount] = (0, _react.useState)(0);
+    //for task - 5
+    const [loading, setLoadingState] = (0, _react.useState)(false);
     function handleAnotherJoke() {
         setReloadCount(reloadCount + 1);
     }
@@ -4221,6 +4223,8 @@ function Joke({ selectedType }) {
                 setJokeState(null);
                 return;
             }
+            //checking and updating the setjokeState value
+            setLoadingState(true);
             const res = await fetch(`https://official-joke-api.appspot.com/jokes/${selectedType}/random`);
             const data = await res.json();
             if (!ignore) setJokeState(data[0]);
@@ -4233,67 +4237,88 @@ function Joke({ selectedType }) {
         selectedType,
         reloadCount
     ]);
-    return jokeState ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    //for Task 5 another useState methods
+    (0, _react.useEffect)(()=>{
+        if (selectedType && jokeState != null) setLoadingState(false);
+    }, [
+        selectedType,
+        jokeState
+    ]);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                 children: "Selected Type: "
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 39,
+                lineNumber: 50,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: selectedType
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 40,
+                lineNumber: 51,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                 children: "Joke: "
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 42,
+                lineNumber: 53,
                 columnNumber: 13
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: jokeState.setup
+            loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "loading..."
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 43,
-                columnNumber: 13
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: jokeState.punchline
+                lineNumber: 56,
+                columnNumber: 21
+            }, this) : jokeState ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: jokeState.setup
+                    }, void 0, false, {
+                        fileName: "src/Joke.js",
+                        lineNumber: 59,
+                        columnNumber: 25
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: jokeState.punchline
+                    }, void 0, false, {
+                        fileName: "src/Joke.js",
+                        lineNumber: 60,
+                        columnNumber: 25
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/Joke.js",
+                lineNumber: 58,
+                columnNumber: 21
+            }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "No Joke loaded yet."
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 44,
-                columnNumber: 13
+                lineNumber: 63,
+                columnNumber: 21
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            selectedType && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: (event)=>{
                     handleAnotherJoke();
                 },
                 children: "Get Another Joke!"
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 45,
-                columnNumber: 13
+                lineNumber: 66,
+                columnNumber: 32
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Joke.js",
-        lineNumber: 38,
-        columnNumber: 9
-    }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-        children: "No Joke loaded yet."
-    }, void 0, false, {
-        fileName: "src/Joke.js",
-        lineNumber: 52,
+        lineNumber: 49,
         columnNumber: 9
     }, this);
 }
-_s(Joke, "8EHq6+FCb66e6UW1+c1mV5nH2EU=");
+_s(Joke, "Wmlus8GgPpyGGnCJLvUKOrF9mUw=");
 _c = Joke;
 exports.default = Joke;
 var _c;
