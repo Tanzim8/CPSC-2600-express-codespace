@@ -17,10 +17,12 @@ function Joke({selectedType}){
         async function fetchJoke() {
             if(!selectedType){
                 setJokeState(null);
+                setLoadingState(false);
                 return;
             }
             //checking and updating the setjokeState value
             setLoadingState(true);
+            setJokeState(null);
             const res = await fetch(
                 `https://official-joke-api.appspot.com/jokes/${selectedType}/random`
             );
@@ -40,9 +42,9 @@ function Joke({selectedType}){
 
     //for Task 5 another useState methods
     useEffect(()=>{
-        if(selectedType && jokeState != null){
+        if (selectedType && jokeState != null && jokeState.type === selectedType) {
             setLoadingState(false);
-        }
+    }
     },[selectedType, jokeState])
 
     return (
@@ -51,7 +53,9 @@ function Joke({selectedType}){
             <p>{selectedType}</p>
 
             <h2>Joke: </h2>
-            {
+            { !selectedType ?(
+                    <p>No Joke loaded yet.</p>
+                ) :
                 loading ? (
                     <p>loading...</p>
                 ): jokeState ? (
@@ -59,9 +63,7 @@ function Joke({selectedType}){
                         <p>{jokeState.setup}</p>
                         <p>{jokeState.punchline}</p>
                     </div>
-                ) : (
-                    <p>No Joke loaded yet.</p>
-                )
+                ) : ( null)
             }
             {selectedType && ( <button onClick={
                 (event) =>{

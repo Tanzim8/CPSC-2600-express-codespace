@@ -4221,10 +4221,12 @@ function Joke({ selectedType }) {
         async function fetchJoke() {
             if (!selectedType) {
                 setJokeState(null);
+                setLoadingState(false);
                 return;
             }
             //checking and updating the setjokeState value
             setLoadingState(true);
+            setJokeState(null);
             const res = await fetch(`https://official-joke-api.appspot.com/jokes/${selectedType}/random`);
             const data = await res.json();
             if (!ignore) setJokeState(data[0]);
@@ -4239,7 +4241,7 @@ function Joke({ selectedType }) {
     ]);
     //for Task 5 another useState methods
     (0, _react.useEffect)(()=>{
-        if (selectedType && jokeState != null) setLoadingState(false);
+        if (selectedType && jokeState != null && jokeState.type === selectedType) setLoadingState(false);
     }, [
         selectedType,
         jokeState
@@ -4250,28 +4252,34 @@ function Joke({ selectedType }) {
                 children: "Selected Type: "
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 50,
+                lineNumber: 52,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: selectedType
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 51,
+                lineNumber: 53,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                 children: "Joke: "
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 53,
+                lineNumber: 55,
                 columnNumber: 13
             }, this),
-            loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            !selectedType ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "No Joke loaded yet."
+            }, void 0, false, {
+                fileName: "src/Joke.js",
+                lineNumber: 57,
+                columnNumber: 21
+            }, this) : loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "loading..."
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 56,
+                lineNumber: 60,
                 columnNumber: 21
             }, this) : jokeState ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
@@ -4279,28 +4287,22 @@ function Joke({ selectedType }) {
                         children: jokeState.setup
                     }, void 0, false, {
                         fileName: "src/Joke.js",
-                        lineNumber: 59,
+                        lineNumber: 63,
                         columnNumber: 25
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: jokeState.punchline
                     }, void 0, false, {
                         fileName: "src/Joke.js",
-                        lineNumber: 60,
+                        lineNumber: 64,
                         columnNumber: 25
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/Joke.js",
-                lineNumber: 58,
+                lineNumber: 62,
                 columnNumber: 21
-            }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: "No Joke loaded yet."
-            }, void 0, false, {
-                fileName: "src/Joke.js",
-                lineNumber: 63,
-                columnNumber: 21
-            }, this),
+            }, this) : null,
             selectedType && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: (event)=>{
                     handleAnotherJoke();
@@ -4308,13 +4310,13 @@ function Joke({ selectedType }) {
                 children: "Get Another Joke!"
             }, void 0, false, {
                 fileName: "src/Joke.js",
-                lineNumber: 66,
+                lineNumber: 68,
                 columnNumber: 32
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/Joke.js",
-        lineNumber: 49,
+        lineNumber: 51,
         columnNumber: 9
     }, this);
 }
