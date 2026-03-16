@@ -2,7 +2,7 @@ import TypeChooser from "./TypeChooser";
 import Joke from "./Joke";
 import { useState } from "react";
 
-function App(){
+const App =()=>{
     const[selectedType,setSelectedType] = useState("");
     return(
         <div>

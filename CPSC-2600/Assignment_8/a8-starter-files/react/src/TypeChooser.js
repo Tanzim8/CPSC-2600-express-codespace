@@ -1,7 +1,7 @@
 //Task-2(craeting the TypeChooser() componenet using useState()s)
 import { useState } from "react";
 
-function TypeChooser({selectedType,setSelectedType}){
+const TypeChooser =({selectedType,setSelectedType}) =>{
     const[types, setTypes] = useState(
         [
             "general",

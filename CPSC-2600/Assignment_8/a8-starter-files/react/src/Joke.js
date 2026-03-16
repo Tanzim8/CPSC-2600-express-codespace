@@ -7,14 +7,14 @@ function Joke({selectedType}){
     const [loading, setLoadingState] = useState(false); 
 
 
-    function handleAnotherJoke(){
+    const handleAnotherJoke =()=>{
         setReloadCount(reloadCount+1);
     }
     //Task 3
     useEffect(() =>{
         let ignore = false;
 
-        async function fetchJoke() {
+        const fetchJoke = async() => {
             if(!selectedType){
                 setJokeState(null);
                 setLoadingState(false);
