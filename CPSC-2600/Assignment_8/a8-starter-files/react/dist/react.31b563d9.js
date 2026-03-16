@@ -1768,7 +1768,7 @@ var _joke = require("./Joke");
 var _jokeDefault = parcelHelpers.interopDefault(_joke);
 var _react = require("react");
 var _s = $RefreshSig$();
-function App() {
+const App = ()=>{
     _s();
     const [selectedType, setSelectedType] = (0, _react.useState)("");
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -1779,28 +1779,29 @@ function App() {
                 fileName: "src/App.js",
                 lineNumber: 10,
                 columnNumber: 13
-            }, this),
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _typeChooserDefault.default), {
+                selectedType: selectedType,
                 setSelectedType: setSelectedType
             }, void 0, false, {
                 fileName: "src/App.js",
                 lineNumber: 11,
                 columnNumber: 13
-            }, this),
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jokeDefault.default), {
                 selectedType: selectedType
             }, void 0, false, {
                 fileName: "src/App.js",
-                lineNumber: 12,
+                lineNumber: 15,
                 columnNumber: 13
-            }, this)
+            }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/App.js",
         lineNumber: 8,
         columnNumber: 9
-    }, this);
-}
+    }, undefined);
+};
 _s(App, "75OvraE5MQ0pYTOo28O807gahAo=");
 _c = App;
 exports.default = App;
@@ -1826,7 +1827,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _s = $RefreshSig$();
-function TypeChooser({ setSelectedType }) {
+const TypeChooser = ({ selectedType, setSelectedType })=>{
     _s();
     const [types, setTypes] = (0, _react.useState)([
         "general",
@@ -1834,19 +1835,26 @@ function TypeChooser({ setSelectedType }) {
         "programming",
         "dad"
     ]);
+    const selectedStyle = {
+        backgroundColor: "lightblue"
+    };
+    const nomralStyle = {
+        backgroundColor: ""
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                 children: "Choose a joke type"
             }, void 0, false, {
                 fileName: "src/TypeChooser.js",
-                lineNumber: 15,
+                lineNumber: 23,
                 columnNumber: 13
-            }, this),
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
                 children: types.map((type)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                             href: "#",
+                            style: type === selectedType ? selectedStyle : nomralStyle,
                             onClick: (event)=>{
                                 event.preventDefault();
                                 setSelectedType(type);
@@ -1854,26 +1862,26 @@ function TypeChooser({ setSelectedType }) {
                             children: type
                         }, void 0, false, {
                             fileName: "src/TypeChooser.js",
-                            lineNumber: 19,
+                            lineNumber: 27,
                             columnNumber: 25
-                        }, this)
+                        }, undefined)
                     }, type, false, {
                         fileName: "src/TypeChooser.js",
-                        lineNumber: 18,
+                        lineNumber: 26,
                         columnNumber: 21
-                    }, this))
+                    }, undefined))
             }, void 0, false, {
                 fileName: "src/TypeChooser.js",
-                lineNumber: 16,
+                lineNumber: 24,
                 columnNumber: 13
-            }, this)
+            }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/TypeChooser.js",
-        lineNumber: 14,
+        lineNumber: 22,
         columnNumber: 9
-    }, this);
-}
+    }, undefined);
+};
 _s(TypeChooser, "oJcnuk8j9DNRLIF7C/TsekgzjYE=");
 _c = TypeChooser;
 exports.default = TypeChooser;
@@ -4212,13 +4220,13 @@ function Joke({ selectedType }) {
     const [reloadCount, setReloadCount] = (0, _react.useState)(0);
     //for task - 5
     const [loading, setLoadingState] = (0, _react.useState)(false);
-    function handleAnotherJoke() {
+    const handleAnotherJoke = ()=>{
         setReloadCount(reloadCount + 1);
-    }
+    };
     //Task 3
     (0, _react.useEffect)(()=>{
         let ignore = false;
-        async function fetchJoke() {
+        const fetchJoke = async ()=>{
             if (!selectedType) {
                 setJokeState(null);
                 setLoadingState(false);
@@ -4230,7 +4238,7 @@ function Joke({ selectedType }) {
             const res = await fetch(`https://official-joke-api.appspot.com/jokes/${selectedType}/random`);
             const data = await res.json();
             if (!ignore) setJokeState(data[0]);
-        }
+        };
         fetchJoke();
         return ()=>{
             ignore = true;
