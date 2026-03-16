@@ -1,7 +1,7 @@
 //Task-2(craeting the TypeChooser() componenet using useState()s)
 import { useState } from "react";
 
-function TypeChooser({setSelectedType}){
+function TypeChooser({selectedType,setSelectedType}){
     const[types, setTypes] = useState(
         [
             "general",
@@ -10,13 +10,22 @@ function TypeChooser({setSelectedType}){
             "dad"
         ]
     )
+    const selectedStyle = {
+        backgroundColor: "lightblue"
+    }
+
+    const nomralStyle ={
+        backgroundColor: ""
+    }
+
     return (
         <div>
             <h1>Choose a joke type</h1>
             <ul>
                 {types.map((type)=>(
                     <li key={type}>
-                        <a href="#" onClick={
+                        <a href="#" 
+                        style={type === selectedType ? selectedStyle : nomralStyle}onClick={
                             (event) =>{
                                 event.preventDefault();
                                 setSelectedType(type);
