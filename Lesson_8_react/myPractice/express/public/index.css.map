@@ -1,1 +1,0 @@
-{"mappings":"AAAA;;;;AAIA","sources":["src/style.css"],"sourcesContent":["h1 {\n    color: slateblue;\n}\n\n.tagline {\n    color: seagreen;\n}"],"names":[],"version":3,"file":"index.css.map","sourceRoot":"../../react/"}

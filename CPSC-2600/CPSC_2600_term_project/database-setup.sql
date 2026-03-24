@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS enrolments;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS courses;
+
+CREATE TABLE students (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    department TEXT NOT NULL
+);
