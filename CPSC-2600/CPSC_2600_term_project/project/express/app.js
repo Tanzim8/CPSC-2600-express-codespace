@@ -1,5 +1,8 @@
 import express from "express";
-import coursesRouter from "./routes/coursesRouter.js"
+import coursesRouter from "./routes/coursesRouter.js";
+import studentRouter from "./routes/studentRouter.js";
+import enrolmentRouter from "./routes/enrolmentRouter.js"
+
 
 import db from "./models/db.js"
 
@@ -20,6 +23,10 @@ app.get("/test-db",(req,res)=>{
 })
 
 app.use("/api/v1/courses", coursesRouter)
+
+app.use("/api/v1/students", studentRouter)
+
+app.use("/api/v1/enrolments", enrolmentRouter)
 
 app.listen(PORT, ()=>{
     console.log(`Server is listening on port ${PORT}`);

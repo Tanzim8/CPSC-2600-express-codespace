@@ -1,4 +1,4 @@
-import { getAllCourses } from "../models/coursesModel.js";
+import { getAllCourses, getCourseByID } from "../models/coursesModel.js";
 
 export const listCourses =(req, res) =>{
     let limit = Number(req.query.limit) || 10;
@@ -14,4 +14,29 @@ export const listCourses =(req, res) =>{
            ] 
         }
     )
+}
+
+export const showCourse = (req, res) =>{
+    const id = Number(req.params.id);
+    const course = getCourseByID(id);
+
+    if(!course){
+        return res.status(404).json({
+            error: "Course not found"
+        })
+    }
+
+    res.json({
+        course: course,
+        links: [
+            {
+                rel: "self",
+                href: `/api/v1/courses/${id}`
+            },
+            {
+                rel: "all-courses",
+                href: "/api/v1/courses"
+            }
+        ]
+    })
 }
