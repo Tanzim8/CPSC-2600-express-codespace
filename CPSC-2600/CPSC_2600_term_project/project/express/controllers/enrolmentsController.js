@@ -12,7 +12,7 @@ export const addEnrolment = (req, res) =>{
 try{
     const result = createEnrolment(student_id, course_id);
 
-    res.status(201).json({
+    return res.status(201).json({
         message: "Student enrolled successfully",
         enrolmentId: result.lastInsertRowid,
         links: [
@@ -27,11 +27,16 @@ try{
         ]
     })
 }catch(error) {
-    res.status(500).json({
+    if (error.message.includes("UNIQUE")) {
+        return res.status(400).json({
+            error: "Student is already enrolled in this course"
+    });
+    }
+    return res.status(500).json({
         error: "Could not create enrolment"
     })
     }
-}
+};
 
 export const removeEnrolment = (req, res) =>{
     const {student_id, course_id} = req.body;
@@ -50,7 +55,7 @@ export const removeEnrolment = (req, res) =>{
         });
     }
 
-    res.json({
+    return res.status(200).json({
         message: "Student dropped from course successfully",
         links: [
             {
@@ -63,4 +68,4 @@ export const removeEnrolment = (req, res) =>{
             }
         ]
     })
-}
+};

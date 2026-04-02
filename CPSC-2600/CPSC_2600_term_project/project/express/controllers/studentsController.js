@@ -3,7 +3,7 @@ import { getStudentEnrolments } from "../models/studentsModel.js";
 export const showStudentEnrolemnts = (req, res) =>{
     const id = Number(req.params.id);
 
-    if(isNaN(id)){
+    if(isNaN(id) || id <= 0){
         return res.status(400).json({
             error: "Invalid student id"
         });
@@ -17,7 +17,7 @@ export const showStudentEnrolemnts = (req, res) =>{
         });
     }
 
-    res.json({
+    return res.status(200).json({
         studentId: id,
         enrolments: enrolments,
         links: [

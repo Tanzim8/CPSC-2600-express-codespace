@@ -4,9 +4,15 @@ export const listCourses =(req, res) =>{
     let limit = Number(req.query.limit) || 10;
     let offset = Number(req.query.offset) || 0;
 
+    if (isNaN(limit) || isNaN(offset) || limit < 0 || offset < 0) {
+        return res.status(400).json({
+            error: "limit and offset must be valid non-negative numbers"
+        });
+    }
+
     const courses = getAllCourses(limit, offset);
 
-    res.json(
+    return res.status(200).json(
         {
            courses: courses,
            links: [
@@ -18,6 +24,12 @@ export const listCourses =(req, res) =>{
 
 export const showCourse = (req, res) =>{
     const id = Number(req.params.id);
+
+    if (isNaN(id) || id <= 0) {
+        return res.status(400).json({
+            error: "Invalid course id"
+        });
+    }
     const course = getCourseByID(id);
 
     if(!course){
@@ -26,7 +38,7 @@ export const showCourse = (req, res) =>{
         })
     }
 
-    res.json({
+    return res.status(200).json({
         course: course,
         links: [
             {
