@@ -15,7 +15,7 @@ export const dropEnrolment = (student_id, course_id) => {
         `
         UPDATE enrolments
         SET status = 'dropped'
-        WHERE student_id = ? AND course_id = ?
+        WHERE student_id = ? AND course_id = ? AND status = 'enrolled'
         `
     ).run(student_id,course_id);
 
