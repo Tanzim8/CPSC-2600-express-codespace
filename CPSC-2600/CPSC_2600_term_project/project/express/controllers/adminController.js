@@ -1,4 +1,4 @@
-import { getCourseEnrolmentCounts } from "../models/adminModel";
+import { getCourseEnrolmentCounts } from "../models/adminModel.js";
 
 export const listAdminCourses = (req,res) =>{
     const courses = getCourseEnrolmentCounts();
