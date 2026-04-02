@@ -1,7 +1,7 @@
 import { createEnrolment, dropEnrolment } from "../models/enrolmentsModel.js";
 
 export const addEnrolment = (req, res) =>{
-    const {student_id, course_id} = req.body;
+    const {student_id, course_id} = req.body || {};
 
     if(!student_id || !course_id){
         return res.status(400).json({
