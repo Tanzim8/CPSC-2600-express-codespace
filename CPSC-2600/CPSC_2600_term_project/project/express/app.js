@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import coursesRouter from "./routes/coursesRouter.js";
 import studentRouter from "./routes/studentRouter.js";
 import enrolmentRouter from "./routes/enrolmentRouter.js";
@@ -10,6 +11,7 @@ import db from "./models/db.js"
 const app = express();
 const PORT = 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res)=>{
