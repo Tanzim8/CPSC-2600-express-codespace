@@ -16,6 +16,7 @@ export const getStudentEnrolments = (studentId) =>{
         JOIN students ON enrolments.student_id = students.id
         JOIN courses ON enrolments.course_id = courses.id
         WHERE students.id = ?
+        AND enrolments.status = 'enrolled'
 
         `
     ).all(studentId);

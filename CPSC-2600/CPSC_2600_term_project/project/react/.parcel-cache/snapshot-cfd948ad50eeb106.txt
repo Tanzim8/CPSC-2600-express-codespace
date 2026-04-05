@@ -1,6 +1,6 @@
 3587
-100/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/src/style.css1775285310340049988 0
-97/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/src/App.js1775285283188048730 0
+100/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/src/style.css1775368470221724450 0
+97/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/src/App.js1775368443627725372 0
 99/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/src/index.js1775279169491765313 0
 90/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/src1775281983723895774 1
 97/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/index.html1775091402232835202 0
@@ -736,7 +736,7 @@
 148/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/features/css3-cursors-newer.js1775091199134846740 0
 145/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/features/input-selection.js1775091199436846723 0
 144/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/features/css-snappoints.js1775091199085846742 0
-115/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/src/components/CourseCard.js1775284143177995881 0
+115/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/src/components/CourseCard.js1775364063071877337 0
 138/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/features/bloburls.js1775091198441846779 0
 147/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/features/css-text-box-trim.js1775091199096846742 0
 137/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/features/portals.js1775091199642846711 0
@@ -1463,7 +1463,7 @@
 123/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/semver/functions/neq.js1775091197980846805 0
 131/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/regions/ZM.js1775091199894846697 0
 135/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/config-default/package.json1775091197263846846 0
-113/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist/react.31b563d9.js.map1775285283873048761 0
+113/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist/react.31b563d9.js.map1775368443944725361 0
 146/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@swc/helpers/_/_iterable_to_array/package.json1775091198950846750 0
 131/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/regions/UA.js1775091199788846703 0
 144/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/react/cjs/react-jsx-dev-runtime.profiling.js1775091152370849396 0
@@ -1621,7 +1621,7 @@
 132/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/picocolors/picocolors.browser.js1775091197104846855 0
 152/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/features/css-anchor-positioning.js1775091198782846760 0
 138/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/transformer-babel/src/utils.js1775091197927846808 0
-114/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist/react.aa436662.css.map1775285310360049989 0
+114/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist/react.aa436662.css.map1775368470259724448 0
 124/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/watcher/src/unix1775091197878846811 1
 136/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/types-internal/src/unsafe.js1775091197817846815 0
 121/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/packager-wasm1775091197427846837 1
@@ -1656,7 +1656,7 @@
 131/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/core/test/test-utils.js1775091198786846759 0
 86/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react1775279068880760649 1
 112/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/lmdb/read.js1775091198890846754 0
-91/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist1775285310360049989 1
+91/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist1775368470259724448 1
 128/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/transformer-html/src1775091197152846852 1
 127/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/events/src/index.js1775091197513846832 0
 141/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/core/lib/requests/AssetRequest.js1775091198065846800 0
@@ -1809,7 +1809,7 @@
 108/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/get-port1775091197183846851 1
 142/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/core/src/requests/ConfigRequest.js1775091198267846789 0
 150/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/core/test/fixtures/config-plugin-not-found1775091197561846829 1
-102/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist/index.html1775285283835048760 0
+102/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist/index.html1775367963931742013 0
 118/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/react-dom/index.js1775091152354849397 0
 148/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/lightningcss/node_modules/detect-libc/lib/elf.js1775091197263846846 0
 126/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/optimizer-html/lib1775091197123846854 1
@@ -1996,7 +1996,7 @@
 149/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/lmdb/dependencies/lmdb/libraries/liblmdb/mtest5.c1775091198644846768 0
 124/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/utility-types/SUPPORT.md1775091197803846815 0
 120/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/lightningcss/LICENSE1775091197094846856 0
-109/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist/react.31b563d9.js1775285283862048761 0
+109/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist/react.31b563d9.js1775368443934725361 0
 156/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/runtime-js/src/helpers/browser/preload-loader.js1775091198187846793 0
 144/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/features/pointer-events.js1775091199637846711 0
 123/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/fs/package.json1775091197839846813 0
@@ -2204,7 +2204,7 @@
 138/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/type-fest/source/conditional-pick.d.ts1775091197619846826 0
 150/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@parcel/node-resolver-core/lib/builtins.browser.js1775091197203846849 0
 119/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@lezer/lr/README.md1775091197618846826 0
-110/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist/react.aa436662.css1775285310359049989 0
+110/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/dist/react.aa436662.css1775368470256724448 0
 140/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/@swc/helpers/esm/_object_spread_props.js1775091198632846768 0
 118/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/chalk/package.json1775091197327846842 0
 146/workspaces/CPSC-2600-express-codespace/CPSC-2600/CPSC_2600_term_project/project/react/node_modules/caniuse-lite/data/features/css-touch-action.js1775091199113846741 0

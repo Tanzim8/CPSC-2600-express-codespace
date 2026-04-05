@@ -58,4 +58,72 @@ h1 {
   margin-bottom: 20px;
   padding: 16px;
 }
+
+.course-card button {
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 8px 14px;
+}
+
+.message {
+  background-color: #fff3cd;
+  border: 1px solid #ffe69c;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.enrolment-list {
+  padding: 0;
+  list-style: none;
+}
+
+.enrolment-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 12px;
+  display: flex;
+}
+
+.enrolment-item button {
+  cursor: pointer;
+  padding: 8px 14px;
+}
+
+.view-toggle {
+  margin-bottom: 20px;
+}
+
+.view-toggle button {
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 8px 14px;
+}
+
+.admin-section {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.admin-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.admin-table th, .admin-table td {
+  text-align: left;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.admin-table th {
+  background-color: #f0f0f0;
+}
 /*# sourceMappingURL=react.aa436662.css.map */

@@ -17420,6 +17420,11 @@ const App = ()=>{
     const [enrolments, setEnrolments] = (0, _react.useState)([]);
     const [enrolmentError, setEnrolmentError] = (0, _react.useState)("");
     const [enrolmentLoading, setEnrolmentLoading] = (0, _react.useState)(false);
+    const [view, setView] = (0, _react.useState)("student");
+    const [adminCourses, setAdminCourses] = (0, _react.useState)([]);
+    const [adminLoading, setAdminLoading] = (0, _react.useState)(false);
+    const [adminError, setAdminError] = (0, _react.useState)("");
+    const [message, setMessage] = (0, _react.useState)("");
     (0, _react.useEffect)(()=>{
         const fetchCourses = async ()=>{
             try {
@@ -17455,161 +17460,481 @@ const App = ()=>{
             setEnrolmentLoading(false);
         }
     };
+    const handleEnrol = async (courseId)=>{
+        if (!studentId) {
+            setMessage("Please enter a student ID before enrolling");
+            return;
+        }
+        try {
+            setMessage("");
+            const response = await fetch(`http://localhost:3000/api/v1/enrolments`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    student_id: Number(studentId),
+                    course_id: courseId
+                })
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || "Could not enrol in course");
+            setMessage("Student enrolled successfully!");
+            await fetchStudentEnrolments();
+        } catch (err) {
+            setMessage(err.message);
+        }
+    };
+    const handleDrop = async (courseId)=>{
+        if (!studentId) {
+            setMessage("Please enter a student ID first.");
+            return;
+        }
+        try {
+            setMessage("");
+            const response = await fetch("http://localhost:3000/api/v1/enrolments/drop", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    student_id: Number(studentId),
+                    course_id: courseId
+                })
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || "Could not drop course");
+            setMessage("Course dropped successfully!");
+            await fetchStudentEnrolments();
+        } catch (err) {
+            setMessage(err.message);
+        }
+    };
+    const fetchAdminCourses = async ()=>{
+        try {
+            setAdminLoading(true);
+            setAdminError("");
+            const response = await fetch("http://localhost:3000/api/v1/admin/courses");
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || "Could not fetch courses");
+            setAdminCourses(data.courses);
+        } catch (err) {
+            setAdminError(err.message);
+        } finally{
+            setAdminLoading(false);
+        }
+    };
+    (0, _react.useEffect)(()=>{
+        if (view === "admin") fetchAdminCourses();
+    }, [
+        view
+    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                 children: "Langara Engineering Enrollment System"
             }, void 0, false, {
                 fileName: "src/App.js",
-                lineNumber: 64,
-                columnNumber: 13
+                lineNumber: 159,
+                columnNumber: 9
+            }, undefined),
+            message && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                className: "message",
+                children: message
+            }, void 0, false, {
+                fileName: "src/App.js",
+                lineNumber: 160,
+                columnNumber: 21
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "student-panel",
+                className: "view-toggle",
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                        children: "Student Panel"
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: ()=>setView("student"),
+                        children: "Student View"
                     }, void 0, false, {
                         fileName: "src/App.js",
-                        lineNumber: 67,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "number",
-                        placeholder: "Enter student ID",
-                        value: studentId,
-                        onChange: (e)=>setStudentId(e.target.value)
-                    }, void 0, false, {
-                        fileName: "src/App.js",
-                        lineNumber: 68,
-                        columnNumber: 17
+                        lineNumber: 163,
+                        columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: fetchStudentEnrolments,
-                        children: "Load My Enrolments"
+                        onClick: ()=>setView("admin"),
+                        children: "Admin View"
                     }, void 0, false, {
                         fileName: "src/App.js",
-                        lineNumber: 74,
-                        columnNumber: 17
-                    }, undefined),
-                    enrolmentLoading && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: "Loading enrolments..."
-                    }, void 0, false, {
-                        fileName: "src/App.js",
-                        lineNumber: 78,
-                        columnNumber: 38
-                    }, undefined),
-                    enrolmentError && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        lineNumber: 167,
+                        columnNumber: 13
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/App.js",
+                lineNumber: 162,
+                columnNumber: 9
+            }, undefined),
+            view === "student" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "student-panel",
                         children: [
-                            "Error: ",
-                            enrolmentError
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                children: "Student Panel"
+                            }, void 0, false, {
+                                fileName: "src/App.js",
+                                lineNumber: 175,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "number",
+                                placeholder: "Enter student ID",
+                                value: studentId,
+                                onChange: (e)=>setStudentId(e.target.value)
+                            }, void 0, false, {
+                                fileName: "src/App.js",
+                                lineNumber: 176,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                onClick: fetchStudentEnrolments,
+                                children: "Load My Enrolments"
+                            }, void 0, false, {
+                                fileName: "src/App.js",
+                                lineNumber: 182,
+                                columnNumber: 21
+                            }, undefined),
+                            enrolmentLoading && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "Loading enrolments..."
+                            }, void 0, false, {
+                                fileName: "src/App.js",
+                                lineNumber: 186,
+                                columnNumber: 42
+                            }, undefined),
+                            enrolmentError && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: [
+                                    "Error: ",
+                                    enrolmentError
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/App.js",
+                                lineNumber: 187,
+                                columnNumber: 40
+                            }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/App.js",
-                        lineNumber: 79,
-                        columnNumber: 36
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/App.js",
-                lineNumber: 66,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "enrolments-section",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                        children: "My Enrolments"
-                    }, void 0, false, {
-                        fileName: "src/App.js",
-                        lineNumber: 83,
+                        lineNumber: 174,
                         columnNumber: 17
                     }, undefined),
-                    enrolments.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                        children: enrolments.map((item)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                children: [
-                                    item.course_code,
-                                    " - ",
-                                    item.course_name
-                                ]
-                            }, item.course_id, true, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "enrolments-section",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                children: "My Enrolments"
+                            }, void 0, false, {
                                 fileName: "src/App.js",
-                                lineNumber: 88,
+                                lineNumber: 191,
+                                columnNumber: 21
+                            }, undefined),
+                            enrolments.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                                className: "enrolment-list",
+                                children: enrolments.map((item)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                        className: "enrolment-item",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                children: [
+                                                    item.course_code,
+                                                    " - ",
+                                                    item.course_name,
+                                                    " (",
+                                                    item.department,
+                                                    ")"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/App.js",
+                                                lineNumber: 197,
+                                                columnNumber: 37
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                onClick: ()=>handleDrop(item.course_id),
+                                                children: "Drop"
+                                            }, void 0, false, {
+                                                fileName: "src/App.js",
+                                                lineNumber: 201,
+                                                columnNumber: 37
+                                            }, undefined)
+                                        ]
+                                    }, item.course_id, true, {
+                                        fileName: "src/App.js",
+                                        lineNumber: 196,
+                                        columnNumber: 33
+                                    }, undefined))
+                            }, void 0, false, {
+                                fileName: "src/App.js",
+                                lineNumber: 194,
+                                columnNumber: 25
+                            }, undefined) : !enrolmentLoading && !enrolmentError && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "No enrolments found for this student."
+                            }, void 0, false, {
+                                fileName: "src/App.js",
+                                lineNumber: 209,
                                 columnNumber: 29
-                            }, undefined))
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/App.js",
+                        lineNumber: 190,
+                        columnNumber: 17
+                    }, undefined),
+                    loading && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: "Loading courses..."
                     }, void 0, false, {
                         fileName: "src/App.js",
-                        lineNumber: 86,
+                        lineNumber: 214,
+                        columnNumber: 29
+                    }, undefined),
+                    error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: [
+                            "Error: ",
+                            error
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/App.js",
+                        lineNumber: 215,
+                        columnNumber: 27
+                    }, undefined),
+                    !loading && !error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                children: "Available Courses"
+                            }, void 0, false, {
+                                fileName: "src/App.js",
+                                lineNumber: 219,
+                                columnNumber: 25
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "courses-container",
+                                children: courses.map((course)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _courseCardJsDefault.default), {
+                                        course: course,
+                                        onEnrol: handleEnrol
+                                    }, course.id, false, {
+                                        fileName: "src/App.js",
+                                        lineNumber: 222,
+                                        columnNumber: 33
+                                    }, undefined))
+                            }, void 0, false, {
+                                fileName: "src/App.js",
+                                lineNumber: 220,
+                                columnNumber: 25
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/App.js",
+                        lineNumber: 218,
                         columnNumber: 21
-                    }, undefined) : !enrolmentLoading && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: "No enrolments found for this student."
-                    }, void 0, false, {
-                        fileName: "src/App.js",
-                        lineNumber: 94,
-                        columnNumber: 42
                     }, undefined)
                 ]
-            }, void 0, true, {
-                fileName: "src/App.js",
-                lineNumber: 82,
-                columnNumber: 13
-            }, undefined),
-            loading && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: "Loading courses..."
-            }, void 0, false, {
-                fileName: "src/App.js",
-                lineNumber: 101,
-                columnNumber: 25
-            }, undefined),
-            error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: [
-                    "Error: ",
-                    error
-                ]
-            }, void 0, true, {
-                fileName: "src/App.js",
-                lineNumber: 102,
-                columnNumber: 23
-            }, undefined),
-            !loading && !error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            }, void 0, true),
+            view === "admin" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "admin-section",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                        children: "Available Courses"
+                        children: "Admin Dashboard"
                     }, void 0, false, {
                         fileName: "src/App.js",
-                        lineNumber: 106,
-                        columnNumber: 21
+                        lineNumber: 236,
+                        columnNumber: 17
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "courses-container",
-                        children: courses.map((course)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _courseCardJsDefault.default), {
-                                course: course
-                            }, course.id, false, {
-                                fileName: "src/App.js",
-                                lineNumber: 109,
-                                columnNumber: 29
-                            }, undefined))
+                    adminLoading && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: "Loading admin courses..."
                     }, void 0, false, {
                         fileName: "src/App.js",
-                        lineNumber: 107,
+                        lineNumber: 238,
+                        columnNumber: 34
+                    }, undefined),
+                    adminError && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: [
+                            "Error: ",
+                            adminError
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/App.js",
+                        lineNumber: 239,
+                        columnNumber: 32
+                    }, undefined),
+                    !adminLoading && !adminError && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("table", {
+                        className: "admin-table",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("thead", {
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Code"
+                                        }, void 0, false, {
+                                            fileName: "src/App.js",
+                                            lineNumber: 245,
+                                            columnNumber: 33
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Course Name"
+                                        }, void 0, false, {
+                                            fileName: "src/App.js",
+                                            lineNumber: 246,
+                                            columnNumber: 33
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Department"
+                                        }, void 0, false, {
+                                            fileName: "src/App.js",
+                                            lineNumber: 247,
+                                            columnNumber: 33
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Capacity"
+                                        }, void 0, false, {
+                                            fileName: "src/App.js",
+                                            lineNumber: 248,
+                                            columnNumber: 33
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                            children: "Total Enrolled"
+                                        }, void 0, false, {
+                                            fileName: "src/App.js",
+                                            lineNumber: 249,
+                                            columnNumber: 33
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/App.js",
+                                    lineNumber: 244,
+                                    columnNumber: 29
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/App.js",
+                                lineNumber: 243,
+                                columnNumber: 25
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
+                                children: adminCourses.map((course)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: course.course_code
+                                            }, void 0, false, {
+                                                fileName: "src/App.js",
+                                                lineNumber: 255,
+                                                columnNumber: 37
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: course.course_name
+                                            }, void 0, false, {
+                                                fileName: "src/App.js",
+                                                lineNumber: 256,
+                                                columnNumber: 37
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: course.department
+                                            }, void 0, false, {
+                                                fileName: "src/App.js",
+                                                lineNumber: 257,
+                                                columnNumber: 37
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: course.capacity
+                                            }, void 0, false, {
+                                                fileName: "src/App.js",
+                                                lineNumber: 258,
+                                                columnNumber: 37
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                children: course.total_students
+                                            }, void 0, false, {
+                                                fileName: "src/App.js",
+                                                lineNumber: 259,
+                                                columnNumber: 37
+                                            }, undefined)
+                                        ]
+                                    }, course.id, true, {
+                                        fileName: "src/App.js",
+                                        lineNumber: 254,
+                                        columnNumber: 33
+                                    }, undefined))
+                            }, void 0, false, {
+                                fileName: "src/App.js",
+                                lineNumber: 252,
+                                columnNumber: 25
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/App.js",
+                        lineNumber: 242,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/App.js",
-                lineNumber: 105,
-                columnNumber: 17
+                lineNumber: 235,
+                columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/App.js",
-        lineNumber: 63,
-        columnNumber: 9
+        lineNumber: 158,
+        columnNumber: 5
     }, undefined);
 };
-_s(App, "15WiCv/nbcvN884TF1R4eqDZdMw=");
+_s(App, "kjXt66a0/FsXYfR0ipp7m7gkdco=");
 _c = App;
-exports.default = App;
+exports.default = App; //     return(
+ //         <div>
+ //             <h1>Langara Engineering Enrollment System</h1>
+ //             {message && <p className="message">{message}</p>}
+ //             <div className = "student-panel">
+ //                 <h2>Student Panel</h2>
+ //                 <input
+ //                     type="number"
+ //                     placeholder="Enter student ID"
+ //                     value={studentId}
+ //                     onChange={(e)=>setStudentId(e.target.value)}
+ //                 />
+ //                 <button onClick={fetchStudentEnrolments}>
+ //                     Load My Enrolments
+ //                 </button>
+ //                 {enrolmentLoading && <p>Loading enrolments...</p>}
+ //                 {enrolmentError && <p>Error: {enrolmentError}</p>}
+ //             </div>
+ //             <div className="enrolments-section">
+ //                 <h2>My Enrolments</h2>
+ //                 {enrolments.length > 0 ? (
+ //                     <ul className="enrolment-list">
+ //                         {enrolments.map((item) => (
+ //                             <li key={item.course_id} className="enrolment-item">
+ //                                 <span>
+ //                                     {item.course_code} - {item.course_name} ({item.department})
+ //                                 </span>
+ //                                 <button onClick={() => handleDrop(item.course_id)}>
+ //                                     Drop
+ //                                 </button>
+ //                             </li>
+ //                         ))}
+ //                     </ul>
+ //                 ):(
+ //                     !enrolmentLoading && <p>No enrolments found for this student.</p>
+ //                 )
+ //                 }
+ //             </div>
+ //             {loading && <p>Loading courses...</p>}
+ //             {error && <p>Error: {error}</p>}
+ //             {!loading && !error && (
+ //                 <div>
+ //                     <h2>Available Courses</h2>
+ //                     <div className="courses-container">
+ //                         {courses.map((course) => (
+ //                             <CourseCard key={course.id} course={course} onEnrol={handleEnrol} />
+ //                     ))}
+ //                     </div>
+ //                 </div>
+ //             )}
+ //             </div>
+ //     );
+ // };
 var _c;
 $RefreshReg$(_c, "App");
 
@@ -19939,7 +20264,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const CourseCard = ({ course })=>{
+const CourseCard = ({ course, onEnrol })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "course-card",
         children: [
@@ -19970,14 +20295,14 @@ const CourseCard = ({ course })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                        children: "Credit:"
+                        children: "Department:"
                     }, void 0, false, {
                         fileName: "src/components/CourseCard.js",
                         lineNumber: 8,
                         columnNumber: 16
                     }, undefined),
                     " ",
-                    course.credits
+                    course.department
                 ]
             }, void 0, true, {
                 fileName: "src/components/CourseCard.js",
@@ -19987,27 +20312,10 @@ const CourseCard = ({ course })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                        children: "Department:"
-                    }, void 0, false, {
-                        fileName: "src/components/CourseCard.js",
-                        lineNumber: 9,
-                        columnNumber: 16
-                    }, undefined),
-                    " ",
-                    course.department
-                ]
-            }, void 0, true, {
-                fileName: "src/components/CourseCard.js",
-                lineNumber: 9,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                         children: "Capacity:"
                     }, void 0, false, {
                         fileName: "src/components/CourseCard.js",
-                        lineNumber: 10,
+                        lineNumber: 9,
                         columnNumber: 16
                     }, undefined),
                     " ",
@@ -20015,7 +20323,15 @@ const CourseCard = ({ course })=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/CourseCard.js",
-                lineNumber: 10,
+                lineNumber: 9,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: ()=>onEnrol(course.id),
+                children: "Enrol"
+            }, void 0, false, {
+                fileName: "src/components/CourseCard.js",
+                lineNumber: 11,
                 columnNumber: 13
             }, undefined)
         ]

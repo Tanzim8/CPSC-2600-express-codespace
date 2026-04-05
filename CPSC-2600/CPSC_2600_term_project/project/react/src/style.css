@@ -57,3 +57,70 @@ h1 {
     margin-bottom: 20px;
     border: 1px solid #ddd;
 }
+.course-card button {
+    margin-top: 10px;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
+.message {
+    background-color: #fff3cd;
+    border: 1px solid #ffe69c;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.enrolment-list {
+    list-style: none;
+    padding: 0;
+}
+
+.enrolment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.enrolment-item button {
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
+.view-toggle {
+    margin-bottom: 20px;
+}
+
+.view-toggle button {
+    margin-right: 10px;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
+.admin-section {
+    background-color: white;
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.admin-table th,
+.admin-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: #f0f0f0;
+}
