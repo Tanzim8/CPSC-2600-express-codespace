@@ -1,11 +1,17 @@
 body {
-  background-color: #f5f5f5;
+  color: #4a2c1d;
+  background-color: #fff7f0;
   margin: 20px;
   font-family: Arial, sans-serif;
 }
 
 h1 {
+  color: #d35400;
   margin-bottom: 30px;
+}
+
+h2 {
+  color: #c65d00;
 }
 
 .courses-container {
@@ -16,14 +22,15 @@ h1 {
 
 .course-card {
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border: 1px solid #f4b183;
+  border-radius: 12px;
   width: 260px;
   padding: 16px;
-  box-shadow: 0 2px 6px #00000014;
+  box-shadow: 0 3px 8px #d2691e1f;
 }
 
 .course-card h3 {
+  color: #d35400;
   margin-top: 0;
   margin-bottom: 10px;
 }
@@ -34,40 +41,67 @@ h1 {
 
 .student-panel {
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border: 1px solid #f4b183;
+  border-radius: 12px;
   margin-bottom: 20px;
   padding: 16px;
+  box-shadow: 0 3px 8px #d2691e14;
 }
 
 .student-panel input {
+  border: 1px solid #f0a46b;
+  border-radius: 6px;
+  outline: none;
   width: 200px;
   margin-right: 10px;
   padding: 8px;
 }
 
+.student-panel input:focus {
+  border-color: #d35400;
+  box-shadow: 0 0 4px #d354004d;
+}
+
 .student-panel button {
   cursor: pointer;
+  color: #fff;
+  background-color: #e67e22;
+  border: none;
+  border-radius: 6px;
   padding: 8px 14px;
+}
+
+.student-panel button:hover {
+  background-color: #d35400;
 }
 
 .enrolments-section {
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border: 1px solid #f4b183;
+  border-radius: 12px;
   margin-bottom: 20px;
   padding: 16px;
+  box-shadow: 0 3px 8px #d2691e14;
 }
 
 .course-card button {
   cursor: pointer;
+  color: #fff;
+  background-color: #e67e22;
+  border: none;
+  border-radius: 6px;
   margin-top: 10px;
   padding: 8px 14px;
 }
 
+.course-card button:hover {
+  background-color: #d35400;
+}
+
 .message {
-  background-color: #fff3cd;
-  border: 1px solid #ffe69c;
+  color: #a04000;
+  background-color: #ffe8d6;
+  border: 1px solid #f4b183;
   border-radius: 8px;
   margin-bottom: 20px;
   padding: 10px;
@@ -79,8 +113,8 @@ h1 {
 }
 
 .enrolment-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #fffaf5;
+  border: 1px solid #f4b183;
   border-radius: 8px;
   justify-content: space-between;
   align-items: center;
@@ -91,7 +125,15 @@ h1 {
 
 .enrolment-item button {
   cursor: pointer;
+  color: #fff;
+  background-color: #e67e22;
+  border: none;
+  border-radius: 6px;
   padding: 8px 14px;
+}
+
+.enrolment-item button:hover {
+  background-color: #d35400;
 }
 
 .view-toggle {
@@ -100,15 +142,24 @@ h1 {
 
 .view-toggle button {
   cursor: pointer;
+  color: #fff;
+  background-color: #f39c12;
+  border: none;
+  border-radius: 6px;
   margin-right: 10px;
   padding: 8px 14px;
 }
 
+.view-toggle button:hover {
+  background-color: #d35400;
+}
+
 .admin-section {
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border: 1px solid #f4b183;
+  border-radius: 12px;
   padding: 16px;
+  box-shadow: 0 3px 8px #d2691e14;
 }
 
 .admin-table {
@@ -119,11 +170,16 @@ h1 {
 
 .admin-table th, .admin-table td {
   text-align: left;
-  border: 1px solid #ddd;
+  border: 1px solid #f4b183;
   padding: 10px;
 }
 
 .admin-table th {
-  background-color: #f0f0f0;
+  color: #8a3d00;
+  background-color: #fbd1a2;
+}
+
+.admin-table tr:nth-child(2n) {
+  background-color: #fff7f0;
 }
 /*# sourceMappingURL=react.aa436662.css.map */
